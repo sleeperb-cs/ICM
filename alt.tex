@@ -1,0 +1,162 @@
+% Interactive Complex Metacognition (ICM)
+% Formal Research Paper Skeleton
+% Author(s): Benjamin Sleeper
+% -----------------------------------------------------------------------------
+\documentclass[11pt]{article}
+
+%------------------------------------------------------------------------------
+% Packages
+%------------------------------------------------------------------------------
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{geometry}
+    \geometry{margin=1in}
+\usepackage{setspace}
+    \onehalfspacing
+\usepackage{amsmath, amssymb, amsfonts, amsthm}
+\usepackage{physics}            % convenient math operators (optional)
+\usepackage{graphicx}
+\usepackage{hyperref}
+    \hypersetup{colorlinks=true, linkcolor=blue, citecolor=blue, urlcolor=blue}
+\usepackage{xcolor}
+\usepackage{doi}
+\usepackage{authblk}            % multiple author affiliations
+\usepackage{cite}               % compressed numerical citations
+\usepackage{enumitem}           % compact itemize/enumerate
+\usepackage{caption}
+\usepackage{subcaption}
+
+%------------------------------------------------------------------------------
+% Custom commands & math macros
+%------------------------------------------------------------------------------
+\newcommand{\bx}{\mathbf{x}}
+\newcommand{\bu}{\mathbf{u}}
+\newcommand{\bp}{\mathbf{p}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Win}{W_{\text{in}}}
+\newcommand{\Wout}{W_{\text{out}}}
+
+% Uncomment the line below to remove equation numbers on un–referenced equations
+% \mathtoolsset{showonlyrefs}
+
+%------------------------------------------------------------------------------
+% Title, authors, affiliations
+%------------------------------------------------------------------------------
+\title{Interactive Complex Metacognition:\\A Reservoir–Based Interface for Human--AI Telepathy}
+
+\author[1]{Benjamin Sleeper}
+\author[2]{Claude 3 Opus}
+\author[3]{ChatGPT}
+\affil[1]{Department of Human Centered Computing, Clemson University\\\texttt{brsleep@clemson.edu}}
+
+\date{\today}
+
+%------------------------------------------------------------------------------
+\begin{document}
+\maketitle
+
+%------------------------------------------------------------------------------
+\begin{abstract}
+% TODO: Summarize purpose, methods, results, significance (\textasciitilde150 words).
+\end{abstract}
+
+%------------------------------------------------------------------------------
+\section{Introduction}\label{sec:intro}
+
+Human--AI collaboration today often relies on text, graphs, or opaque dashboards to convey an AI's internal state—yet these channels miss the richness of complex dynamical patterns. We propose a paradigm shift: treat the \\emph{interface itself} as the computational substrate, allowing two ``minds'' (human~$\leftrightarrow$~AI, or human~$\leftrightarrow$~human) to exchange information by steering a shared dynamical system. By exposing the reservoir's state directly to users, \emph{Interactive Complex Metacognition} (ICM) leverages \emph{generalized synchronization} to create a meta‑communication channel through emergent patterns.
+
+% ------------------ Contributions (edit as needed) ---------------------------
+\paragraph{Contributions.} This paper:
+\begin{enumerate}[topsep=2pt,itemsep=2pt,parsep=0pt]
+    \item formalizes ICM as a bidirectional communication framework grounded in reservoir computing and synchronization theory;
+    \item derives theoretical guarantees for information fidelity under generalized synchronization;
+    \item presents a reference JavaScript implementation with real‑time particle dynamics;
+    \item demonstrates two case studies: chaotic signal forecasting and human–AI intent sharing;
+    \item discusses limitations, ethical considerations, and future research directions.
+\end{enumerate}
+
+%------------------------------------------------------------------------------
+\section{Background}\label{sec:background}
+\subsection{Reservoir Computing}
+% TODO: Brief overview and key equations.
+
+\subsection{Generalized Synchronization}
+% TODO: Define GS, cite relevant literature.
+
+%------------------------------------------------------------------------------
+\section{Interactive Complex Metacognition Framework}\label{sec:framework}
+
+\subsection{Dynamical Core}
+Consider a high‑dimensional state $\bx(t)\in\R^{N}$ governed by the nonlinear update
+\begin{equation}\label{eq:dynamical-core}
+    \bx(t+1) = f\bigl(\Win\,\bp(t) + W\,\bx(t)\bigr),
+\end{equation}
+where $\bp(t)\in\R^{K}$ is a real‑time \emph{intent vector} manipulated via sliders, gestures, or programmatic control, $\Win$ maps intents into the reservoir, and $W$ denotes recurrent weights. A JavaScript‑like pseudocode snippet for a particle reservoir is given in Appendix~\ref{app:pseudocode}.
+
+\subsection{Generalized Readout and Synchronization}
+Under generalized synchronization, there exists a smooth map $\mathbf{h}$ such that the decoded output
+\begin{equation}
+    \hat y(t) = \mathbf{h}\bigl(\bx(t)\bigr)
+\end{equation}
+tracks the target signal with bounded error. Exposing $\bx(t)$ directly allows an observing mind to \emph{perceive} and internally approximate $\mathbf{h}$ without a hidden linear readout.
+
+\subsection{Cognitive Interaction Loop}
+The bidirectional loop is
+\begin{equation*}
+    \text{Encode}_{\text{Mind A}}\;\rightarrow\;\text{Evolve}_{\text{Reservoir}}\;\rightarrow\;\text{Perceive}_{\text{Mind B}}\;\rightarrow\;\text{Decode/Encode}_{\text{Mind B}}\;\rightarrow\;\cdots
+\end{equation*}
+which iterates until a shared mental model emerges.
+
+\subsection{Compute–Optional, Compute–Enhanced Modes}
+Even without heavy compute, the raw UI conveys rich patterns. Additional modules—e.g., adaptive kernels or predictive seeding—can be attached to refine expressivity while remaining grounded in synchronization theory.
+
+%------------------------------------------------------------------------------
+\section{Implementation}\label{sec:implementation}
+% TODO: Software stack, system diagram, algorithmic details.
+
+%------------------------------------------------------------------------------
+\section{Experiments and Case Studies}\label{sec:experiments}
+\subsection{Chaotic Forecasting}
+% TODO: Experimental setup and quantitative results.
+
+\subsection{Human–AI Intent Sharing}
+% TODO: Qualitative analysis, user study protocol.
+
+%------------------------------------------------------------------------------
+\section{Discussion}\label{sec:discussion}
+% TODO: Interpret results, limitations, ethical considerations.
+
+%------------------------------------------------------------------------------
+\section{Future Work}\label{sec:future-work}
+% TODO: Roadmap and open questions.
+
+%------------------------------------------------------------------------------
+\section{Conclusion}\label{sec:conclusion}
+% TODO: Recap contributions and significance.
+
+%------------------------------------------------------------------------------
+\section*{Acknowledgments}
+% TODO: Funding sources, thanks to collaborators, etc.
+
+%------------------------------------------------------------------------------
+% Bibliography
+%------------------------------------------------------------------------------
+\bibliographystyle{unsrt}
+\bibliography{references}
+
+%------------------------------------------------------------------------------
+% Appendices
+%------------------------------------------------------------------------------
+\appendix
+
+\section{JavaScript Reservoir Pseudocode}\label{app:pseudocode}
+\begin{verbatim}
+// reservoir particle update (excerpt)
+this.x      = W/2 + radius * Math.cos(angle);
+this.y      = H/2 + radius * Math.sin(angle);
+this.speedX = Math.random() * (2 * spinSpeed) - spinSpeed;
+this.speedY = Math.random() * (2 * spinSpeed) - spinSpeed;
+\end{verbatim}
+
+\end{document}

@@ -1,0 +1,173 @@
+\documentclass[12pt]{article}
+% ------------------------------------------------------------
+%               Packages & Global Configuration
+% ------------------------------------------------------------
+% --- Encoding & Font
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+% --- Page geometry & line spacing
+\usepackage[margin=1in]{geometry}
+\usepackage{setspace}
+%\onehalfspacing   % Uncomment for 1.5 line spacing
+
+% --- Figures & Tables
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{mathtools}   % Enhanced math formatting (added after subcaption)
+\usepackage{booktabs}
+\usepackage{float}
+
+% --- Math & Symbols
+\usepackage{amsmath, amssymb, amsfonts}
+\usepackage{bm}
+\usepackage{physics}
+\usepackage{siunitx}
+
+% --- Algorithms
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+
+% --- Hyperlinks
+\usepackage[hidelinks]{hyperref}
+\usepackage{doi}
+
+% --- Lists & Colors
+\usepackage{enumitem}
+\usepackage{xcolor}
+
+% --- Bibliography (BibLaTeX users can swap this out)
+\usepackage[numbers]{natbib}
+
+% ------------------------------------------------------------
+%                       Custom Macros
+% ------------------------------------------------------------
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\vect}[1]{\mathbf{#1}}
+\newcommand{\mat}[1]{\mathbf{#1}}
+\DeclareMathOperator{\diag}{diag}
+
+% ------------------------------------------------------------
+%                          Metadata
+% ------------------------------------------------------------
+\title{Interactive Complex Metacognition:\\A Reservoir-Based Interface for Human--AI Co-Synchronization}
+\author{Benjamin Sleeper$^{1}$\\[0.5ex]\small $^{1}$Human Centered Computing, Department of Computer Science, Clemson University, Clemson, SC, USA\\ \texttt{benjamin@example.com}}
+\date{\today}
+
+% ------------------------------------------------------------
+%                         Document
+% ------------------------------------------------------------
+\begin{document}
+\maketitle
+
+% ----------------------- Abstract ---------------------------
+\begin{abstract}
+% 150--250 words summarizing motivation, approach, results, and significance.
+Reservoir computing offers a powerful framework for capturing complex dynamics, yet traditional interfaces obscure the richness of those dynamics from users. We propose Interactive Complex Metacognition (ICM), a tangible reservoir interface that exposes the underlying state directly to human collaborators, enabling bidirectional synchronization between minds and machines. This skeleton provides the structure for presenting ICM formally, from theoretical foundations to empirical validation.
+\end{abstract}
+
+% Optional keywords section
+\bigskip
+\noindent\textbf{Keywords:} reservoir computing, generalized synchronization, human--computer interaction, metacognition, dynamical systems
+
+% ----------------------- Main Text --------------------------
+\section{Introduction}
+% (Paste or adapt your existing introduction here.)
+Human--AI collaboration today often relies on text, graphs, or opaque dashboards to convey an AI's internal state—yet these channels miss the richness of complex dynamical patterns. We propose a paradigm shift: treat the \\emph{interface itself} as the computational substrate, allowing two ``minds'' (human~$\leftrightarrow$~AI, or human~$\leftrightarrow$~human) to exchange information by steering a shared dynamical system. By exposing the reservoir's state directly to users, \emph{Interactive Complex Metacognition} (ICM) leverages \emph{generalized synchronization} to create a meta‑communication channel through emergent patterns.
+\section{Background}
+\subsection{Reservoir Computing}
+% Provide classical formulation and motivation.
+Reservoir Computing is a computational framework with intriguing and powerful properties. The formation of a reservoir computer involves identifying complex latent, physical, or computational dynamical systems and utilizing their inherent complexity to perform computation, based on some computational adaptation to their complex dynamics. For example, physical reservoir systems like a bucket of water(source) have been turned into computational tools through applying neural-like computational analysis of their inputs and outputs, referred to in the literature as readouts. (include figure here). 
+
+Reservoir computing has recently been generalized by readouts in both physical and computational systems (source, source), and universalized in dynamics in various ways(source, source, source, source, source). However, the interesting properties of reservoirs have not yet been applied to state-of-the-art artificially intelligent language models for tangible interactive metacognition; for humans or AIs alike. This can be facilitated by general synchronization, which is the background for the generalization of computational readouts of reservoir computers(source).
+
+\subsection{Generalized Synchronization}
+% Place the equation-based explanation here.
+
+
+\section{Interactive Complex Metacognition Framework}
+\subsection{Dynamical Core}
+% Present Eq. (1) and intuitive description.
+Consider a high‑dimensional state $\bx(t)\in\R^{N}$ governed by the nonlinear update
+\begin{equation}\label{eq:dynamical-core}
+    \bx(t+1) = f\bigl(\Win\,\bp(t) + W\,\bx(t)\bigr),
+\end{equation}
+where $\bp(t)\in\R^{K}$ is a real‑time \emph{intent vector} manipulated via sliders, gestures, or programmatic control, $\Win$ maps intents into the reservoir, and $W$ denotes recurrent weights. A JavaScript‑like pseudocode snippet for a particle reservoir is given in Appendix~\ref{app:pseudocode}.
+\subsection{Generalized Readout \& Synchronization}
+% Elaborate on mapping h and theoretical guarantees.
+Under generalized synchronization, there exists a smooth map $\mathbf{h}$ such that the decoded output
+\begin{equation}
+    \hat y(t) = \mathbf{h}\bigl(\bx(t)\bigr)
+\end{equation}
+tracks the target signal with bounded error. Exposing $\bx(t)$ directly allows an observing mind to \emph{perceive} and internally approximate $\mathbf{h}$ without a hidden linear readout.
+
+\subsection{Cognitive Interaction Loop}
+% Include diagram or ASCII schematic.
+The bidirectional loop is
+\begin{equation*}
+    \text{Encode}_{\text{Mind A}}\;\rightarrow\;\text{Evolve}_{\text{Reservoir}}\;\rightarrow\;\text{Perceive}_{\text{Mind B}}\;\rightarrow\;\text{Decode/Encode}_{\text{Mind B}}\;\rightarrow\;\cdots
+\end{equation*}
+which iterates until a shared mental model emerges.
+
+\subsection{Compute-Optional Enhancements}
+% Discuss optional ML modules, predictive seeding, etc.
+Even without heavy compute, the raw UI conveys rich patterns. Additional modules—e.g., adaptive kernels or predictive seeding—can be attached to refine expressivity while remaining grounded in synchronization theory.
+\section{Prototype Implementation}
+\appendix{Supplementary Appendix}
+% Derivations, additional figures, user study instruments, etc.
+\section{JavaScript Reservoir Pseudocode}\label{app:pseudocode}
+\begin{verbatim}
+// reservoir particle update (excerpt)
+this.x      = W/2 + radius * Math.cos(angle);
+this.y      = H/2 + radius * Math.sin(angle);
+this.speedX = Math.random() * (2 * spinSpeed) - spinSpeed;
+this.speedY = Math.random() * (2 * spinSpeed) - spinSpeed;
+\end{verbatim}
+
+\subsection{Interface Design}
+% Describe particle canvas, parameter controls, etc.
+
+\subsection{Experimental Setup}
+% Hardware, datasets (if any), participant demographics.
+
+\section{Evaluation}
+% Quantitative metrics, qualitative user study, ablations.
+
+\section{Discussion}
+% Interpretation of results, limitations, ethical concerns.
+\paragraph{Contributions.} This paper:
+\begin{enumerate}[topsep=2pt,itemsep=2pt,parsep=0pt]
+    \item formalizes ICM as a bidirectional communication framework grounded in reservoir computing and synchronization theory;
+    \item derives theoretical guarantees for information fidelity under generalized synchronization;
+    \item presents a reference JavaScript implementation with real‑time particle dynamics;
+    \item demonstrates two case studies: chaotic signal forecasting and human–AI intent sharing;
+    \item discusses limitations, ethical considerations, and future research directions.
+\end{enumerate}
+\section{Related Work}
+% Position against HCI, reservoir computing, BCI literature.
+
+\section{Future Directions}
+% Extensions, open questions, real-world deployment paths.
+
+\section{Conclusion}
+% Recap contributions and broader impact.
+
+% ----------------------- References -------------------------
+\bibliographystyle{unsrtnat} % Or another style like IEEEtranNat
+\bibliography{references}     % Expect a references.bib file
+
+% ----------------------- Appendix ---------------------------
+
+\appendix{Supplementary Appendix}
+% Derivations, additional figures, user study instruments, etc.
+\section{JavaScript Reservoir Pseudocode}\label{app:pseudocode}
+\begin{verbatim}
+// reservoir particle update (excerpt)
+this.x      = W/2 + radius * Math.cos(angle);
+this.y      = H/2 + radius * Math.sin(angle);
+this.speedX = Math.random() * (2 * spinSpeed) - spinSpeed;
+this.speedY = Math.random() * (2 * spinSpeed) - spinSpeed;
+\end{verbatim}
+\end{document}
